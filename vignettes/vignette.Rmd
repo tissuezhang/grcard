@@ -33,7 +33,7 @@ devtools::install_github("tissuezhang/grcard")
 library(grcard)
 ```
 
-devtools::install_github("tissuezhang/grcard")
+
 
 ## Functions
 Four functions are included in this package.
@@ -105,7 +105,7 @@ the pause time at the end
 # Examples
 
 ```{r}
-xmas_card()
+xmas_card(greeting="Marry Christmas my dear friend", color="dream")
 ```
 
 ```{r}
