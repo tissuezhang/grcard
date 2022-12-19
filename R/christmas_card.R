@@ -106,7 +106,7 @@ xmas_video<-function(christmascard, audio="xmas music.mp3", duration = 13,
     do.call("c", .)
   save.wave(xmas_wave,"xmas music.mp3")
 
-  animate(christmascard,renderer = av_renderer('card_video.mp4',
+  animate(christmascard,renderer = av_renderer('christmas_card_video.mp4',
        audio=audio),duration = duration, end_pause = end_pause)}
 
 

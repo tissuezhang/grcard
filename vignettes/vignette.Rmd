@@ -24,9 +24,16 @@ This is an attempt of using R to create greeting cards, which I did not see any 
 
 Instead of just import images, the greeting cards created with this package are totally based on data. So each kind of cards are having a data set. The data set contains 6 columns, which are "x", "y", "group", "size", "t" and "shape". 
 
-Install packages:
+
 It can be access from the Github: https://github.com/tissuezhang/grcard
 
+Install packages:
+```{r}
+devtools::install_github("tissuezhang/grcard")
+library(grcard)
+```
+
+devtools::install_github("tissuezhang/grcard")
 
 ## Functions
 Four functions are included in this package.
@@ -44,10 +51,7 @@ the greeting words to show on the card, default is "Happy Birthday".
 color	
 the color of the birthday card, could be choose from "cream", "chocolate" and "strawberry".
 
-Example
-```{r}
-bday_card(greeting = "Happy birthday my dear friend", color = "chocolate")
-```
+
 \func{bday_video()} Allows users to create a birthday card video. The music will created with function automatically, which is the defult of the audio argument. But it also allows users to upload their own mp3 music, as well as change the video's duration and end pause time to match their music duration.
 
 Usage
@@ -66,13 +70,8 @@ the duration of the video
 end_pause	
 the pause time at the end
 
-Example
-```{r}
-birthdaycard<-bday_card()
-bday_video(birthdaycard)
-```
 
-\func{xmas_card()} Allows users to create a birthday card in GIF format.  Simillar to the \func{bday_card()}.
+\func{xmas_card()} Allows users to create a Christmas card in GIF format.  Simillar to the \func{bday_card()}.
 
 Usage
 xmas_card(greeting = "Merry Christmas", color = "candy")
@@ -102,6 +101,17 @@ the duration of the video
 
 end_pause	
 the pause time at the end
+
+# Examples
+
+```{r}
+xmas_card()
+```
+
+```{r}
+Christmascard<-xmas_card()
+xmas_video(Christmascard)
+```
 
 # Future Plan
 

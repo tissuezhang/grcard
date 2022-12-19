@@ -106,7 +106,7 @@ bday_video<-function(birthdaycard, audio="bday music.mp3", duration = 13,
     do.call("c", .)
 
   save.wave(bday_wave,"bday music.mp3")
-  animate(birthdaycard,renderer = av_renderer('card_video.mp4',
+  animate(birthdaycard,renderer = av_renderer('birthday_card_video.mp4',
           audio=audio),duration = duration, end_pause = end_pause)}
 
 #' @title Birthday_card Data
