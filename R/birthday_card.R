@@ -2,10 +2,9 @@
 #' Birthday Card GIF
 #'
 #' @description Create a birthday card in GIF format
-#' @param greeting the greeting words to show on the card
+#' @param greeting the greeting words to show on the card, default is "Happy Birthday".
 #' @param color the color of the birthday card, could be choose from "cream",
-#' "chocolate" and "strawberry", or create your own color combination by using
-#' the \code{bdaycolor}
+#' "chocolate" and "strawberry",default is "cream"
 #'
 #' @return A GIF format birthday card
 #' @export
@@ -60,7 +59,7 @@ bday_card<-function(greeting="Happy Birthday",
 
 #' Birthday Video
 #'
-#' @param birthdaycard the GIF birthday card witch created by \code{bday_card}
+#' @param birthdaycard the GIF birthday card witch created by \func{bday_card}
 #' @param audio the audio play with the video
 #' @param duration the duration of the video
 #' @param end_pause the pause time at the end

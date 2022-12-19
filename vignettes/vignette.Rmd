@@ -2,7 +2,7 @@
 title: "grcard package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction of grcard package}
+  %\VignetteIndexEntry{grcard package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,13 +39,69 @@ bday_card(greeting = "Happy Birthday", color = "cream")
 
 Arguments
 greeting	
-the greeting words to show on the card
+the greeting words to show on the card, default is "Happy Birthday".
 
 color	
-the color of the birthday card, could be choose from "cream", "chocolate" and "strawberry", or create a new color combination by using the \func{bday_color}
+the color of the birthday card, could be choose from "cream", "chocolate" and "strawberry".
 
 Example
 ```{r}
 bday_card(greeting = "Happy birthday my dear friend", color = "chocolate")
 ```
+\func{bday_video()} Allows users to create a birthday card video. 
+
+Usage
+bday_video(birthdaycard, audio = "bday music.mp3", duration = 13, end_pause = 2)
+
+Arguments
+birthdaycard	
+the GIF birthday card which created by \func{bday_card()} 
+
+audio	
+the audio play with the video, user could up lode their own music
+
+duration	
+the duration of the video
+
+end_pause	
+the pause time at the end
+
+Example
+```{r}
+birthdaycard<-bday_card()
+bday_video(birthdaycard)
+```
+
+\func{xmas_card()} Allows users to create a birthday card in GIF format. 
+
+Usage
+xmas_card(greeting = "Merry Christmas", color = "candy")
+
+Arguments
+greeting	
+the greeting words to show on the card, default is "Merry Christmas".
+
+color	
+the color of the Christmas card, could be choose from "forest", "candy" and "dream"
+
+\func{xmas_video()} Allows users to create a Christmas card video. 
+
+Usage
+xmas_video(christmascard,audio = "xmas music.mp3",duration = 13, end_pause = 2)
+
+Arguments
+
+christmascard	
+the GIF christmas card which created by \func{xmas_card()} 
+
+audio	
+the audio play with the video, user could up lode their own music
+
+duration	
+the duration of the video
+
+end_pause	
+the pause time at the end
+
+
 

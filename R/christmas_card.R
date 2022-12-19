@@ -2,10 +2,10 @@
 #' Christmas Card GIF
 #'
 #' @description Create a Christmas card in GIF format
-#' @param greeting the greeting words to show on the card, defult is "Merry Christmas"
+#' @param greeting the greeting words to show on the card, default is "Merry Christmas"
 #' @param color the color of the Christmas card, could be choose from "forest",
-#' "candy" and "dream", or create your own color combination by using. Defult is "candy"
-#' the \code{xmas_color}
+#' "candy" and "dream", default is "candy".
+#'
 #'
 #' @return A GIF format Christmas card
 #' @export
