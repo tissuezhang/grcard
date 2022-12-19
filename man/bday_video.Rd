@@ -12,7 +12,7 @@ bday_video(
 )
 }
 \arguments{
-\item{birthdaycard}{the GIF birthday card witch created by \code{bday_card}}
+\item{birthdaycard}{the GIF birthday card}
 
 \item{audio}{the audio play with the video}
 

@@ -7,11 +7,10 @@
 xmas_card(greeting = "Merry Christmas", color = "candy")
 }
 \arguments{
-\item{greeting}{the greeting words to show on the card, defult is "Merry Christmas"}
+\item{greeting}{the greeting words to show on the card, default is "Merry Christmas"}
 
 \item{color}{the color of the Christmas card, could be choose from "forest",
-"candy" and "dream", or create your own color combination by using. Defult is "candy"
-the \code{xmas_color}}
+"candy" and "dream", default is "candy".}
 }
 \value{
 A GIF format Christmas card

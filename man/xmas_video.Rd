@@ -12,7 +12,7 @@ xmas_video(
 )
 }
 \arguments{
-\item{christmascard}{the GIF Christmas card witch created by \code{xmas_card}}
+\item{christmascard}{the GIF Christmas card}
 
 \item{audio}{the audio play with the video}
 

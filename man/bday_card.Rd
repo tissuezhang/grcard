@@ -7,11 +7,10 @@
 bday_card(greeting = "Happy Birthday", color = "cream")
 }
 \arguments{
-\item{greeting}{the greeting words to show on the card}
+\item{greeting}{the greeting words to show on the card, default is "Happy Birthday".}
 
 \item{color}{the color of the birthday card, could be choose from "cream",
-"chocolate" and "strawberry", or create your own color combination by using
-the \code{bdaycolor}}
+"chocolate" and "strawberry",default is "cream"}
 }
 \value{
 A GIF format birthday card

@@ -58,7 +58,7 @@ xmas_card<-function(greeting="Merry Christmas",
 
 #' Christmas Video
 #'
-#' @param christmascard the GIF Christmas card witch created by \code{xmas_card}
+#' @param christmascard the GIF Christmas card
 #' @param audio the audio play with the video
 #' @param duration the duration of the video
 #' @param end_pause the pause time at the end

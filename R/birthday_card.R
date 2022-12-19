@@ -59,7 +59,7 @@ bday_card<-function(greeting="Happy Birthday",
 
 #' Birthday Video
 #'
-#' @param birthdaycard the GIF birthday card witch created by \func{bday_card}
+#' @param birthdaycard the GIF birthday card
 #' @param audio the audio play with the video
 #' @param duration the duration of the video
 #' @param end_pause the pause time at the end
