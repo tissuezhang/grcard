@@ -29,7 +29,7 @@ It can be access from the Github: https://github.com/tissuezhang/grcard
 
 
 ## Functions
-Six functions are included in this package.
+Four functions are included in this package.
 
 
 \func{bday_card()} Allows users to create a birthday card in GIF format. 
@@ -48,7 +48,7 @@ Example
 ```{r}
 bday_card(greeting = "Happy birthday my dear friend", color = "chocolate")
 ```
-\func{bday_video()} Allows users to create a birthday card video. 
+\func{bday_video()} Allows users to create a birthday card video. The music will created with function automatically, which is the defult of the audio argument. But it also allows users to upload their own mp3 music, as well as change the video's duration and end pause time to match their music duration.
 
 Usage
 bday_video(birthdaycard, audio = "bday music.mp3", duration = 13, end_pause = 2)
@@ -58,7 +58,7 @@ birthdaycard
 the GIF birthday card which created by \func{bday_card()} 
 
 audio	
-the audio play with the video, user could up lode their own music
+the audio play with the video, user could upload their own music
 
 duration	
 the duration of the video
@@ -72,7 +72,7 @@ birthdaycard<-bday_card()
 bday_video(birthdaycard)
 ```
 
-\func{xmas_card()} Allows users to create a birthday card in GIF format. 
+\func{xmas_card()} Allows users to create a birthday card in GIF format.  Simillar to the \func{bday_card()}.
 
 Usage
 xmas_card(greeting = "Merry Christmas", color = "candy")
@@ -84,7 +84,7 @@ the greeting words to show on the card, default is "Merry Christmas".
 color	
 the color of the Christmas card, could be choose from "forest", "candy" and "dream"
 
-\func{xmas_video()} Allows users to create a Christmas card video. 
+\func{xmas_video()} Allows users to create a Christmas card video. Simillar to the\func{bday_video()} .
 
 Usage
 xmas_video(christmascard,audio = "xmas music.mp3",duration = 13, end_pause = 2)
@@ -103,5 +103,9 @@ the duration of the video
 end_pause	
 the pause time at the end
 
+# Future Plan
 
-
+In the future, I would like to create more kinds of cards, such as "thank you", 
+"love you", "happy new year","congratulations" and so on...
+Also, provide more models for user to choose. For example, different kind of birthday card.
+Further more, I would like to create some data set which could plot different elements, such as a "cake", a "gift",or a "flower", and users could create a character card by use these different data set. 
