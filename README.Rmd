@@ -16,18 +16,17 @@ knitr::opts_chunk$set(
 # grcard
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The goal of grcard is to created three kinds of dynamic greeting cards - 
-    birthday card, Christmas card and "love you" card.
+The goal of grcard is to created dynamic greeting cards - birthday card and Christmas card.
 
 ## Installation
 
 You can install the development version of grcard like so:
 
-``` r
-install.packages("grcard")
-```
+[Github]https://github.com/tissuezhang/grcard
+
 
 
 ## Example
@@ -36,15 +35,9 @@ This is a basic example which shows you how to create a GIF card:
 
 ```{r example}
 library(grcard)
-bdcard<-birthday_card(greeting = "Happy birthday my dear friend", color = "strawberry")
+bdcard<-bday_card(greeting = "Happy birthday my dear friend", color = "strawberry")
 bdcard
 ```
 
-Instead of a GIF card, create a video with music
 
-```{r video}
-birthday_video(bdcard)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
 

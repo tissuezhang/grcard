@@ -57,9 +57,10 @@ bday_card<-function(greeting="Happy Birthday",
   birthday
 }
 
-#' Birthday Card Video
+
+#' Birthday Video
 #'
-#' @param birthdaycard the GIF birthday card witch created by \code{birthdaycard}
+#' @param birthdaycard the GIF birthday card witch created by \code{bday_card}
 #' @param audio the audio play with the video
 #' @param duration the duration of the video
 #' @param end_pause the pause time at the end
@@ -69,41 +70,45 @@ bday_card<-function(greeting="Happy Birthday",
 #' @importFrom gganimate av_renderer
 #' @importFrom gganimate animate
 #' @importFrom av av_audio_convert
+#' @importFrom audio save.wave
+#' @importFrom dplyr tibble mutate %>%
 #' @examples
 #' birthdaycard<-bday_card()
 #' bday_video(birthdaycard)
-bday_video<-function(birthdaycard, audio = bday_music_mp3, duration = 12,
+bday_video<-function(birthdaycard, audio="bday music.mp3", duration = 13,
                          end_pause = 2){
-  animate(birthdaycard,renderer = av_renderer('birthday_video.mp4',
-             audio=audio),duration = duration, end_pause = end_pause)}
+  notes <- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 10)
+  pitch <- "D D E D G F# D D E D A G D D D5 B G F# E C5 C5 B G A G"
+  length1 <- c(rep(c(0.75, 0.25, 1, 1, 1, 2), 2),
+               0.75, 0.25, 1, 1, 1, 1, 1, 0.75, 0.25, 1, 1, 1, 2)
+  bday <- tibble(pitch = strsplit(pitch, " ")[[1]],
+                 length1 = length1)
+  bday <-bday %>% mutate(octave = substring(pitch, nchar(pitch)) %>%
+                           {suppressWarnings(as.numeric(.))} %>%
+                           ifelse(is.na(.), 4, .),
+                         note = notes[substr(pitch, 1, 1)],
+                         note = note + grepl("#", pitch) -
+                           grepl("b", pitch) + octave * 12 +
+                           12 * (note < 3),
+                         freq = 2 ^ ((note - 60) / 12) * 440)
 
-#' Birthday Card Colors
-#'
-#' @param cakebottom cake bottom color
-#' @param caketop cake top color
-#' @param candle1 candle1 color
-#' @param candle2 candle2 color
-#' @param candle3 candle3 color
-#' @param candle4 candle4 color
-#' @param candle5 candle5 color
-#' @param candle6 candle6 color
-#' @param line1 line1 color
-#' @param line2 line2 color
-#' @param line3 line3 color
-#' @param star1 star1 color
-#' @param star2 star2 color
-#'
-#' @return the colors for the birthday card
-#' @export
-#'
-#'
-bday_color<-function(cakebottom, caketop, candle1, candle2,candle3, candle4,
-                    candle5, candle6, line1, line2, line3, star1, star2)
-{
-  c(candle1, candle2,candle3, candle4, candle5, candle6,
-    caketop, cakebottom, line1, line2, line3, star1, star2)
-}
+  tempo <- 120
+  sample_rate <- 44100
 
+  make_sine <- function(freq, length1) {
+    wave <- sin(seq(0, length1 / tempo * 60, 1 / sample_rate) *
+                  freq * 2 * pi)
+    fade <- seq(0, 1, 50 / sample_rate)
+    wave * c(fade, rep(1, length(wave) - 2 * length(fade)), rev(fade))
+  }
+
+  bday_wave <-
+    mapply(make_sine, bday$freq, bday$length1) %>%
+    do.call("c", .)
+
+  save.wave(bday_wave,"bday music.mp3")
+  animate(birthdaycard,renderer = av_renderer('card_video.mp4',
+          audio=audio),duration = duration, end_pause = end_pause)}
 
 #' @title Birthday_card Data
 

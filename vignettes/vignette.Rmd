@@ -1,0 +1,51 @@
+---
+title: "grcard package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction of grcard package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(grcard)
+```
+The "grcard" is package to create greeting cards. The package name "grcard" means "greeting card". At this moment, two kinds of cards could be create with grcard - "Birthday card" and "Christmas card".
+
+
+This is an attempt of using R to create greeting cards, which I did not see any other packages could do this. It creates dynamic cards in GIF, as well as could generates a video. This is an idea to show the beautiful of data and the romantic of programmers, and just for fun!
+
+Instead of just import images, the greeting cards created with this package are totally based on data. So each kind of cards are having a data set. The data set contains 6 columns, which are "x", "y", "group", "size", "t" and "shape". 
+
+Install packages:
+It can be access from the Github: https://github.com/tissuezhang/grcard
+
+
+## Functions
+Six functions are included in this package.
+
+
+\func{bday_card()} Allows users to create a birthday card in GIF format. 
+
+Usage
+bday_card(greeting = "Happy Birthday", color = "cream")
+
+Arguments
+greeting	
+the greeting words to show on the card
+
+color	
+the color of the birthday card, could be choose from "cream", "chocolate" and "strawberry", or create a new color combination by using the \func{bday_color}
+
+Example
+```{r}
+bday_card(greeting = "Happy birthday my dear friend", color = "chocolate")
+```
+

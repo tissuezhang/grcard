@@ -56,52 +56,59 @@ xmas_card<-function(greeting="Merry Christmas",
 }
 
 
-#' Christmas Card Video
+#' Christmas Video
 #'
 #' @param christmascard the GIF Christmas card witch created by \code{xmas_card}
 #' @param audio the audio play with the video
 #' @param duration the duration of the video
 #' @param end_pause the pause time at the end
 #'
-#' @return A video format of Christmas card
+#' @return A video format of birthday card
 #' @export
 #' @importFrom gganimate av_renderer
 #' @importFrom gganimate animate
 #' @importFrom av av_audio_convert
-#' @examples
-#' christmascard<-xmas_card(color="candy")
-#' xmas_video(christmascard)
-xmas_video<-function(christmascard, audio=xmas_music_mp3,
-                     duration = 12,end_pause = 2){
-  animate(christmascard,renderer = av_renderer('christmas_video.mp4',
-                       audio=audio),duration = duration, end_pause = end_pause)}
+#' @importFrom audio save.wave
+#' @importFrom dplyr tibble mutate
 
-#' Christmas Card Colors
-#'
-#' @param ball1 ball color
-#' @param ball2 ball color
-#' @param ball3 ball color
-#' @param ball4 ball color
-#' @param ball5 ball color
-#' @param ball6 ball color
-#' @param ball7 ball color
-#' @param star star color
-#' @param treebottom treebottom color
-#' @param treelower treelower color
-#' @param treeupper treeupper color
-#' @param treetop treetop color
-#' @param trunk trunk color
-#'
-#' @return a list of colors for the Christmas card
-#' @export
-#'
-#'
-xmas_color<-function(ball1, ball2, ball3, ball4,ball5, ball6,
-                ball7, star, treebottom, treelower, treeupper, treetop, trunk)
-{
-  c(ball1, ball2, ball3, ball4,ball5, ball6,
-    ball7, star, treebottom, treelower, treeupper, treetop, trunk)
-}
+xmas_video<-function(christmascard, audio="xmas music.mp3", duration = 13,
+                         end_pause = 2){
+  notes <- c(A = 0, B = 2, C = 3, D = 5, E = 7, F = 8, G = 10)
+  pitch2 <- list("D","G","G","A","G","F#","E","C","C","A","A","B","A",
+                 "G","F#","D","D","B","B","C5","B","A","G","E","D","E",
+                 "A", "F#", "G")
+  length2 <- c(1, 1, 0.5,0.5, 0.5, 0.5,1, 1, 1, 1,0.5, 0.5, 0.5,0.5,1, 1, 1,
+                 1, 0.5,0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 3)
+  xmas <- tibble(pitch = pitch2,
+                 length2= length2)
+
+  xmas <-xmas %>%mutate(octave = substring(pitch, nchar(pitch)) %>%
+             {suppressWarnings(as.numeric(.))} %>%
+             ifelse(is.na(.), 4, .),
+           note = notes[substr(pitch, 1, 1)],
+           note = note + grepl("#", pitch) -
+             grepl("b", pitch) + octave * 12 +
+             12 * (note < 3),
+           freq = 2 ^ ((note - 60) / 12) * 440)
+
+  tempo <- 120
+  sample_rate <- 44100
+
+  make_sine <- function(freq, length2) {
+    wave <- sin(seq(0, length2/ tempo * 60, 1 / sample_rate) *
+                  freq * 2 * pi)
+    fade <- seq(0, 1, 50 / sample_rate)
+    wave * c(fade, rep(1, length(wave) - 2 * length(fade)), rev(fade))
+  }
+
+  xmas_wave <-
+    mapply(make_sine, xmas$freq, xmas$length2) %>%
+    do.call("c", .)
+  save.wave(xmas_wave,"xmas music.mp3")
+
+  animate(christmascard,renderer = av_renderer('card_video.mp4',
+       audio=audio),duration = duration, end_pause = end_pause)}
+
 
 
 #' @title Christmas Card Data

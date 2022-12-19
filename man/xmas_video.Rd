@@ -2,9 +2,14 @@
 % Please edit documentation in R/christmas_card.R
 \name{xmas_video}
 \alias{xmas_video}
-\title{Christmas Card Video}
+\title{Christmas Video}
 \usage{
-xmas_video(christmascard, audio = xmas_music_mp3, duration = 12, end_pause = 2)
+xmas_video(
+  christmascard,
+  audio = "xmas music.mp3",
+  duration = 13,
+  end_pause = 2
+)
 }
 \arguments{
 \item{christmascard}{the GIF Christmas card witch created by \code{xmas_card}}
@@ -16,12 +21,8 @@ xmas_video(christmascard, audio = xmas_music_mp3, duration = 12, end_pause = 2)
 \item{end_pause}{the pause time at the end}
 }
 \value{
-A video format of Christmas card
+A video format of birthday card
 }
 \description{
-Christmas Card Video
-}
-\examples{
-christmascard<-xmas_card(color="candy")
-xmas_video(christmascard)
+Christmas Video
 }
