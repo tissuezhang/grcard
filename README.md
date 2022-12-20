@@ -4,7 +4,10 @@
 # grcard
 
 <!-- badges: start -->
-<!-- badges: end -->
+
+`bday_card` make a birthday card GIF `bday_video` make a birthday card
+video `xmas_card` make a Christmas card GIF `xmas_video` make a
+Christmas card video <!-- badges: end -->
 
 The goal of grcard is to created dynamic greeting cards - birthday card
 and Christmas card.
